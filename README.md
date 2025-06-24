@@ -2,6 +2,8 @@
 
 ## Production
 
+Create `.env` file and see `.env.example`
+
 DockerCompose: [Install](https://docs.docker.com/compose/install)
 
 ```bash
@@ -21,10 +23,14 @@ make: [MacOS](https://formulae.brew.sh/formula/make) [Windows](https://gnuwin32.
 ```bash
 # Setup git hooks to run linters before commit
 git config core.hooksPath .githooks
-# for generate db/queries/*.sql
-make sqlc-gen
 # run
 make dev-compose
-make dev-apps # need wait for start compose, mb 30sec for first start!?
+make dev-apps
+
+# run kafka producer script
+make kafka-script
+
+# generate db/queries/*.sql
+make sqlc-gen
 # see makefile for all commands
 ```

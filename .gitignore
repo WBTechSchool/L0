@@ -23,9 +23,13 @@ go.work.sum
 
 # env file
 .env
+.env.dev
 
 # db
 db/pg
 
 # some files
 .DS_Store
+
+# kafka
+kafka-data
