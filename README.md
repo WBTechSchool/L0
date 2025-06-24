@@ -1,8 +1,8 @@
 # WB LO
 
-## Production
-
 Create `.env` file and see `.env.example`
+
+## Production
 
 DockerCompose: [Install](https://docs.docker.com/compose/install)
 
