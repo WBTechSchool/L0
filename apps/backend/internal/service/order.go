@@ -22,10 +22,14 @@ type orderService struct {
 }
 
 func NewOrderService(db *db.Storage) OrderService {
-	return &orderService{
+	service := &orderService{
 		db:          db,
 		cacheOrders: make(map[int64]models.OrderResponse, 0),
 	}
+
+	service.GetOrders(context.Background()) // for cacheOrders
+
+	return service
 }
 
 func (o *orderService) GetOrderByID(ctx context.Context, id int) (*models.OrderResponse, error) {
@@ -56,7 +60,7 @@ func (o *orderService) GetOrders(ctx context.Context) {
 	}
 
 	for _, row := range rows {
-		response, err := convertOrderToOrderResponse(row)
+		response, err := convertOrderToOrderResponse(gen.GetOrderByIDRow(row))
 		if err != nil {
 			continue
 		}
